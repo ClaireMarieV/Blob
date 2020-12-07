@@ -1,65 +1,53 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+
+const round = (value) => Math.round(value * 10000000) / 10000000;
+
+const sin = Math.sin;
+const cos = Math.cos;
 
 export default function Home() {
+  const pointCount = 8;
+  const radius = 1;
+  const angle = (2 * Math.PI) / pointCount;
+
+  let path = "M1 0";
+  const points = [];
+  const control =
+    (4 / 3) * Math.tan(Math.PI / (2 * (1 / (angle / (Math.PI * 2))))) * radius;
+  for (let i = 0; i < pointCount; i++) {
+    const startAngle = angle * i;
+    const endAngle = startAngle + angle;
+
+    path += " C";
+    path += round(-control * sin(startAngle) + radius * cos(startAngle));
+    path += " ";
+    path += round(control * cos(startAngle) + radius * sin(startAngle));
+    path += ", ";
+    path += round(control * sin(endAngle) + radius * cos(endAngle));
+    path += " ";
+    path += round(-control * cos(endAngle) + radius * sin(endAngle));
+    path += ", ";
+    path += round(Math.cos(endAngle));
+    path += " ";
+    path += round(Math.sin(endAngle));
+
+    points.push({ x: Math.cos(startAngle), y: Math.sin(startAngle) });
+  }
+  path += "z";
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+    <div>
+      <svg viewBox="-2 -2 4 4">
+        {points.map((point) => (
+          <circle cx={point.x} cy={point.y} r="0.01"></circle>
+        ))}
+        <path fill="black" d={path}></path>
+      </svg>
+      <style jsx>{`
+        svg {
+          height: 100vh;
+        }
+      `}</style>
     </div>
-  )
+  );
 }
