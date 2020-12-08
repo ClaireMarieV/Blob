@@ -1,9 +1,16 @@
 import React from "react";
 
-const Parameters = () => (
+const Parameters = ({ pointCount, onPointCountChange }) => (
   <div className="parameters">
     <label>Nombre de points</label>
-    <input type="range" min="3" max="50" id="points-count"></input>
+    <input
+      type="range"
+      min="3"
+      max="50"
+      id="points-count"
+      value={pointCount}
+      onChange={(event) => onPointCountChange(event.target.value)}
+    ></input>
     <style jsx>{`
       .parameters {
         display: flex;
