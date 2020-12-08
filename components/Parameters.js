@@ -1,6 +1,11 @@
 import React from "react";
 
-const Parameters = ({ pointCount, onPointCountChange }) => (
+const Parameters = ({
+  pointCount,
+  onPointCountChange,
+  color,
+  onChangeColor,
+}) => (
   <div className="parameters">
     <label>Nombre de points</label>
     <input
@@ -11,6 +16,17 @@ const Parameters = ({ pointCount, onPointCountChange }) => (
       value={pointCount}
       onChange={(event) => onPointCountChange(event.target.value)}
     ></input>
+
+    <label>Colors</label>
+    <input
+      type="color"
+      min="3"
+      max=""
+      id="colors"
+      value={color}
+      onChange={(event) => onChangeColor(event.target.value)}
+    ></input>
+
     <style jsx>{`
       .parameters {
         display: flex;

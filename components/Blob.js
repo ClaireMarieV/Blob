@@ -4,7 +4,7 @@ const round = (value) => Math.round(value * 10000000) / 10000000;
 const sin = Math.sin;
 const cos = Math.cos;
 
-const Blob = ({ pointCount }) => {
+const Blob = ({ pointCount, color }) => {
   const radius = 1;
   const angle = (2 * Math.PI) / pointCount;
   let index = 0;
@@ -39,7 +39,7 @@ const Blob = ({ pointCount }) => {
         {points.map((point) => (
           <circle cx={point.x} cy={point.y} r="0.01"></circle>
         ))}
-        <path fill="black" d={path}></path>
+        <path fill={color} d={path}></path>
       </svg>
       <style jsx>{`
         svg {
