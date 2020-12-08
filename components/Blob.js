@@ -63,7 +63,18 @@ const Blob = ({ pointCount, color }) => {
       <svg viewBox="-2 -2 4 4">
         <path fill={color} d={path}></path>
         {points.map(({ point }) => (
-          <circle cx={point.x} cy={point.y} r="0.05"></circle>
+          <circle cx={point.x} cy={point.y} r="0.02"></circle>
+        ))}
+        {points.map(({ control1 }) => (
+          <circle
+            cx={control1.x}
+            cy={control1.y}
+            r="0.02"
+            fill="orange"
+          ></circle>
+        ))}
+        {points.map(({ control2 }) => (
+          <circle cx={control2.x} cy={control2.y} r="0.02" fill="gold"></circle>
         ))}
       </svg>
       <style jsx>{`
