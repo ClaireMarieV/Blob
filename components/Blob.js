@@ -6,14 +6,14 @@ const cos = Math.cos;
 
 const Blob = ({ pointCount, color }) => {
   const radius = 1;
-  const angle = (2 * Math.PI) / pointCount;
+  const angle = Math.PI / pointCount;
   let index = 0;
   let path = "M1 0";
   const points = [];
   const control =
     (4 / 3) * Math.tan(Math.PI / (2 * (1 / (angle / (Math.PI * 2))))) * radius;
 
-  for (let i = 0; i < pointCount; i++) {
+  for (let i = 0; i < pointCount * 2; i++) {
     const startAngle = angle * i;
     const endAngle = startAngle + angle;
 
@@ -26,9 +26,14 @@ const Blob = ({ pointCount, color }) => {
     path += " ";
     path += round(-control * cos(endAngle) + radius * sin(endAngle));
     path += ", ";
-    path += round(Math.cos(endAngle));
+
+    const minOffset = 0.6;
+    const offset =
+      i % 2 === 0 ? Math.random() * (1 - minOffset) + minOffset : 1;
+    //Coordonnées du point x et y
+    path += round(Math.cos(endAngle) * offset); //x
     path += " ";
-    path += round(Math.sin(endAngle));
+    path += round(Math.sin(endAngle) * offset); //y
 
     points.push({ x: Math.cos(startAngle), y: Math.sin(startAngle) });
   }
@@ -44,6 +49,7 @@ const Blob = ({ pointCount, color }) => {
       <style jsx>{`
         svg {
           height: 100vh;
+          justify-self: center;
         }
       `}</style>
     </div>
