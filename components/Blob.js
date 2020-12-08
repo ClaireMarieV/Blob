@@ -7,44 +7,64 @@ const cos = Math.cos;
 const Blob = ({ pointCount, color }) => {
   const radius = 1;
   const angle = Math.PI / pointCount;
-  let index = 0;
-  let path = "M1 0";
-  const points = [];
   const control =
     (4 / 3) * Math.tan(Math.PI / (2 * (1 / (angle / (Math.PI * 2))))) * radius;
+
+  let points = [];
 
   for (let i = 0; i < pointCount * 2; i++) {
     const startAngle = angle * i;
     const endAngle = startAngle + angle;
-
-    path += " C";
-    path += round(-control * sin(startAngle) + radius * cos(startAngle));
-    path += " ";
-    path += round(control * cos(startAngle) + radius * sin(startAngle));
-    path += ", ";
-    path += round(control * sin(endAngle) + radius * cos(endAngle));
-    path += " ";
-    path += round(-control * cos(endAngle) + radius * sin(endAngle));
-    path += ", ";
-
     const minOffset = 0.6;
     const offset =
       i % 2 === 0 ? Math.random() * (1 - minOffset) + minOffset : 1;
-    //Coordonnées du point x et y
-    path += round(Math.cos(endAngle) * offset); //x
-    path += " ";
-    path += round(Math.sin(endAngle) * offset); //y
 
-    points.push({ x: Math.cos(startAngle), y: Math.sin(startAngle) });
+    points.push({
+      control1: {
+        x: round(
+          -control * sin(startAngle) + radius * cos(startAngle) * offset
+        ),
+        y: round(control * cos(startAngle) + radius * sin(startAngle) * offset),
+      },
+      control2: {
+        x: round(control * sin(endAngle) + radius * cos(endAngle) * offset),
+        y: round(-control * cos(endAngle) + radius * sin(endAngle) * offset),
+      },
+      point: {
+        x: round(Math.cos(endAngle) * offset),
+        y: round(Math.sin(endAngle) * offset),
+      },
+    });
   }
-  path += "z";
+
+  const path =
+    "M1 0 " +
+    points
+      .map(
+        ({ control1, control2, point }) =>
+          "C" +
+          control1.x +
+          " " +
+          control1.y +
+          ", " +
+          control2.x +
+          " " +
+          control2.y +
+          ", " +
+          point.x +
+          " " +
+          point.y
+      )
+      .join(" ") +
+    "Z";
+
   return (
     <div>
       <svg viewBox="-2 -2 4 4">
-        {points.map((point) => (
-          <circle cx={point.x} cy={point.y} r="0.01"></circle>
-        ))}
         <path fill={color} d={path}></path>
+        {points.map(({ point }) => (
+          <circle cx={point.x} cy={point.y} r="0.05"></circle>
+        ))}
       </svg>
       <style jsx>{`
         svg {
