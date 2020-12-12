@@ -1,44 +1,62 @@
 import React from "react";
+import DivColors from "../components/DivColors";
 
 const Parameters = ({
   pointCount,
-  onPointCountChange,
+  onChangePointCount,
   color,
   onChangeColor,
-}) => (
-  <div className="parameters">
-    <label>Nombre de points</label>
-    <input
-      type="range"
-      min="3"
-      max="50"
-      id="points-count"
-      value={pointCount}
-      onChange={(event) => onPointCountChange(event.target.value)}
-    ></input>
+  background,
+  onChangeBackground,
+}) => {
+  return (
+    <div className="parameters">
+      <label>Ondulation</label>
+      <input
+        type="range"
+        min="3"
+        max="50"
+        id="points-count"
+        value={pointCount}
+        onChange={(event) => onChangePointCount(event.target.value)}
+      ></input>
 
-    <label>Colors</label>
-    <input
-      type="color"
-      min="3"
-      max=""
-      id="colors"
-      value={color}
-      onChange={(event) => onChangeColor(event.target.value)}
-    ></input>
+      <div>
+        <label>
+          Colors
+          <input
+            type="text"
+            min="3"
+            max=""
+            id="colors"
+            value={color}
+            onChange={(event) => onChangeColor(event.target.value)}
+          ></input>
+        </label>
+      </div>
+      <DivColors
+        value={background}
+        onChange={(color) => onChangeColor(color)}
+      />
 
-    <style jsx>{`
-      .parameters {
-        display: flex;
-        flex-direction: column;
-        width: 45vw;
-        margin: auto;
-      }
-      points-count {
-        width: 100%;
-      }
-    `}</style>
-  </div>
-);
+      <style jsx>{`
+        .parameters {
+          display: flex;
+          flex-direction: row;
+          margin: auto;
+          width: auto;
+          padding: 1rem;
+          justify-content: space-around;
+        }
+        .points-count {
+          width: 100%;
+        }
+        .background-color {
+          width: 50px;
+        }
+      `}</style>
+    </div>
+  );
+};
 
 export default Parameters;
