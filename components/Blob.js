@@ -94,7 +94,7 @@ const Blob = ({ pointCount, color }) => {
             x2={endControl.x}
             y2={endControl.y}
             stroke="black"
-            stroke-width="0.01"
+            strokeWidth="0.01"
           ></line>
         ))}
         {points.map(({ endControl }) => (
