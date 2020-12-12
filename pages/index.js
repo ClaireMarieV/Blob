@@ -7,6 +7,7 @@ import Layout from "../components/Layout.js";
 const IndexPage = () => {
   const [pointCount, setPointCount] = useState(4);
   const [color, setColor] = useState("#ab21c2");
+  const [background, setBackground] = useState("#ab21c2");
 
   return (
     <Layout>
@@ -14,18 +15,14 @@ const IndexPage = () => {
         <Blob pointCount={pointCount} color={color} />
         <Parameters
           pointCount={pointCount}
-          onPointCountChange={setPointCount}
+          onChangePointCount={setPointCount}
           color={color}
           onChangeColor={setColor}
+          background={background}
+          onChangeBackground={setBackground}
         />
       </Container>
-      <style jsx>{`
-        .blob {
-          display: flex;
-        }
-        div h1 {
-        }
-      `}</style>
+      <style jsx>{``}</style>
     </Layout>
   );
 };
