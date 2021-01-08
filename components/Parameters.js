@@ -15,7 +15,7 @@ const Parameters = ({
       <input
         type="range"
         min="3"
-        max="50"
+        max="5"
         id="points-count"
         value={pointCount}
         onChange={(event) => onChangePointCount(event.target.value)}
