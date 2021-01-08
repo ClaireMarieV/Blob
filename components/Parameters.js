@@ -2,6 +2,7 @@ import React from "react";
 import DivColors from "../components/DivColors";
 
 const Parameters = ({
+  regeneratePoints,
   pointCount,
   onChangePointCount,
   color,
@@ -11,6 +12,9 @@ const Parameters = ({
 }) => {
   return (
     <div className="parameters">
+      <button onClick={(event) => regeneratePoints()}>
+        Regénérer une forme
+      </button>
       <label>Ondulation</label>
       <input
         type="range"

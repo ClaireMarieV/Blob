@@ -66,11 +66,15 @@ const IndexPage = () => {
     setPoints(generateBlobShape());
   }, [pointCount]);
 
+  const regeneratePoints = () => {
+    setPoints(generateBlobShape());
+  };
   return (
     <Layout>
       <Container>
         <Blob points={points} color={color} />
         <Parameters
+          regeneratePoints={regeneratePoints}
           pointCount={pointCount}
           onChangePointCount={setPointCount}
           color={color}
