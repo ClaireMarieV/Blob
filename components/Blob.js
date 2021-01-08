@@ -1,62 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const round = (value) => Math.round(value * 10000000) / 10000000;
-const sin = Math.sin;
-const cos = Math.cos;
-
-const Blob = ({ pointCount, color }) => {
-  const [points, setPoints] = useState([]);
-  const radius = 1;
-  const angle = Math.PI / pointCount;
-  const control =
-    (4 / 3) * Math.tan(Math.PI / (2 * (1 / (angle / (Math.PI * 2))))) * radius;
-
-  const generateBlobShape = () => {
-    let points = [];
-    let startOffset = 1;
-
-    for (let i = 0; i < pointCount * 2; i++) {
-      const startAngle = angle * i;
-      const endAngle = startAngle + angle;
-      const minOffset = 0.6;
-      const endOffset =
-        i % 2 === 0 ? Math.random() * (1 - minOffset) + minOffset : 1;
-
-      points.push({
-        startControl: {
-          x: round(
-            -control * sin(startAngle) + radius * cos(startAngle) * startOffset
-          ),
-          y: round(
-            control * cos(startAngle) + radius * sin(startAngle) * startOffset
-          ),
-        },
-        endControl: {
-          x: round(
-            control * sin(endAngle) + radius * cos(endAngle) * endOffset
-          ),
-          y: round(
-            -control * cos(endAngle) + radius * sin(endAngle) * endOffset
-          ),
-        },
-        startPoint: {
-          x: round(Math.cos(startAngle) * startOffset),
-          y: round(Math.sin(startAngle) * startOffset),
-        },
-        endPoint: {
-          x: round(Math.cos(endAngle) * endOffset),
-          y: round(Math.sin(endAngle) * endOffset),
-        },
-      });
-      startOffset = endOffset;
-    }
-    return points;
-  };
-
-  useEffect(() => {
-    setPoints(generateBlobShape());
-  }, [pointCount]);
-
+const Blob = ({ points, color }) => {
   const path =
     "M1 0 " +
     points
