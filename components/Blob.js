@@ -23,8 +23,20 @@ const Blob = ({ points, color }) => {
     "Z";
 
   return (
-    <div>
-      <svg viewBox="-2 -2 4 4">
+    <a
+      download="blob.svg"
+      href={
+        "data:image/svg+xml;base64," +
+        btoa(
+          "<?xml version='1.0' standalone='no'?><svg viewBox='-1 -1 2 2' xmlns='http://www.w3.org/2000/svg'><path fill='" +
+            color +
+            "' d='" +
+            path +
+            "'></path></svg>"
+        )
+      }
+    >
+      <svg viewBox="-1 -1 2 2">
         <path fill={color} d={path}></path>
         {points.map(({ endPoint }) => (
           <circle cx={endPoint.x} cy={endPoint.y} r="0.02"></circle>
@@ -68,11 +80,10 @@ const Blob = ({ points, color }) => {
       </svg>
       <style jsx>{`
         svg {
-          height: 100vh;
-          justify-self: center;
+          height: 75vh;
         }
       `}</style>
-    </div>
+    </a>
   );
 };
 export default Blob;
