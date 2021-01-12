@@ -70,6 +70,7 @@ const DivColors = ({ onChange, value }) => (
           #ff0000
         );
         border-radius: 0.25rem;
+        margin: 1rem;
       }
     `}</style>
   </div>
