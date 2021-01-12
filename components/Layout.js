@@ -1,5 +1,5 @@
 import React from "react";
-
+import Header from "./Header.js";
 const Layout = ({ children }) => (
   <div className="layout">
     <link rel="stylesheet" href="https://use.typekit.net/bwz5hff.css"></link>
@@ -24,7 +24,6 @@ const Layout = ({ children }) => (
       {`
         html {
           overflow: auto;
-          height: 100%;
         }
 
         main {
@@ -39,9 +38,32 @@ const Layout = ({ children }) => (
         }
         body {
           margin: 0;
-          overflow-x: auto;
-          overflow-y: hidden;
-          background-color: #fbfdfd;
+          overflow-x: hidden;
+          overflow-y: auto;
+          font-family: raleway, sans-serif;
+          font-weight: 700;
+          font-style: normal;
+          color: #343434;
+          background: linear-gradient(
+              217deg,
+              rgb(255, 255, 255, 0.8),
+              rgb(255, 255, 255, 0) 20.71%
+            ),
+            linear-gradient(
+              217deg,
+              rgb(218, 215, 218, 0.8),
+              rgb(218, 215, 218, 0) 70.71%
+            ),
+            linear-gradient(
+              336deg,
+              rgb(233, 233, 233, 0.8),
+              rgb(233, 233, 233, 0) 70.71%
+            ),
+            linear-gradient(
+              117deg,
+              rgb(255, 255, 255, 0.8),
+              rgb(255, 255, 255, 0) 70.71%
+            );
         }
         ::-webkit-scrollbar {
           scrollbar-width: 5px;
@@ -71,8 +93,7 @@ const Layout = ({ children }) => (
           font-weight: 700;
           font-size: 3rem;
           font-style: normal;
-          color: #2e575b;
-          margin: 0;
+          margin: 2rem;
         }
 
         h2,
@@ -98,6 +119,18 @@ const Layout = ({ children }) => (
 
         ul {
           list-style: none;
+        }
+        button {
+          margin: 2rem;
+          padding: 1rem;
+          border: none;
+          border-radius: 10px;
+          background-color: #343434;
+          color: white;
+          width: 10rem;
+        }
+        input {
+          margin: 1rem;
         }
       `}
     </style>
