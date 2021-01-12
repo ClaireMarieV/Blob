@@ -72,7 +72,12 @@ const IndexPage = () => {
   return (
     <Layout>
       <Container>
-        <Blob points={points} color={color} />
+        <div className="blob">
+          <Blob points={points} color={color} />
+          <div>
+            <button onClick={(event) => regeneratePoints()}>Change</button>
+          </div>
+        </div>
         <Parameters
           regeneratePoints={regeneratePoints}
           pointCount={pointCount}
@@ -83,7 +88,15 @@ const IndexPage = () => {
           onChangeBackground={setBackground}
         />
       </Container>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .blob {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin: 2rem;
+        }
+      `}</style>
     </Layout>
   );
 };
