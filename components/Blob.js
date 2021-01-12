@@ -26,14 +26,15 @@ const Blob = ({ points, color }) => {
     <a
       download="blob.svg"
       href={
+        typeof btoa !== "undefined" &&
         "data:image/svg+xml;base64," +
-        btoa(
-          "<?xml version='1.0' standalone='no'?><svg viewBox='-1 -1 2 2' xmlns='http://www.w3.org/2000/svg'><path fill='" +
-            color +
-            "' d='" +
-            path +
-            "'></path></svg>"
-        )
+          btoa(
+            "<?xml version='1.0' standalone='no'?><svg viewBox='-1 -1 2 2' xmlns='http://www.w3.org/2000/svg'><path fill='" +
+              color +
+              "' d='" +
+              path +
+              "'></path></svg>"
+          )
       }
     >
       <svg viewBox="-1 -1 2 2">
