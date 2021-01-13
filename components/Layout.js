@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header.js";
 const Layout = ({ children }) => (
   <div className="layout">
     <link rel="stylesheet" href="https://use.typekit.net/bwz5hff.css"></link>
@@ -40,30 +39,11 @@ const Layout = ({ children }) => (
           margin: 0;
           overflow-x: hidden;
           overflow-y: auto;
-          font-family: raleway, sans-serif;
+          font-family: quicksand, sans-serif;
           font-weight: 700;
           font-style: normal;
           color: #343434;
-          background: linear-gradient(
-              217deg,
-              rgb(255, 255, 255, 0.8),
-              rgb(255, 255, 255, 0) 20.71%
-            ),
-            linear-gradient(
-              217deg,
-              rgb(218, 215, 218, 0.8),
-              rgb(218, 215, 218, 0) 70.71%
-            ),
-            linear-gradient(
-              336deg,
-              rgb(233, 233, 233, 0.8),
-              rgb(233, 233, 233, 0) 70.71%
-            ),
-            linear-gradient(
-              117deg,
-              rgb(255, 255, 255, 0.8),
-              rgb(255, 255, 255, 0) 70.71%
-            );
+          background-color: #f1f0f1;
         }
         ::-webkit-scrollbar {
           scrollbar-width: 5px;
@@ -89,7 +69,7 @@ const Layout = ({ children }) => (
           color: #ffff;
         }
         h1 {
-          font-family: neue-kabel, sans-serif;
+          font-family: raleway, sans-serif;
           font-weight: 700;
           font-size: 3rem;
           font-style: normal;
@@ -98,15 +78,11 @@ const Layout = ({ children }) => (
 
         h2,
         h4 {
-          font-family: arboria, sans-serif;
-          font-weight: 500;
           margin-bottom: 0.5rem;
           margin-top: 0;
           color: #ece0d5;
         }
         p {
-          font-family: raleway, sans-serif;
-          font-weight: 300;
           padding: 2em;
           text-align: justify;
           color: #ece0d5;
@@ -124,13 +100,14 @@ const Layout = ({ children }) => (
           margin: 2rem;
           padding: 1rem;
           border: none;
-          border-radius: 10px;
-          background-color: #343434;
-          color: white;
-          width: 10rem;
+          border-radius: 40px;
+          width: 5rem;
+          background-color: #62b589;
         }
         input {
           margin: 1rem;
+          border-radius: 5px;
+          border: none;
         }
       `}
     </style>
@@ -327,9 +304,7 @@ const Layout = ({ children }) => (
       }
       body {
         color: hsla(0, 0%, 0%, 0.8);
-        font-family: kumlien-pro, serif;
-        font-weight: 400;
-        font-style: normal;
+
         word-wrap: break-word;
         font-kerning: normal;
         -moz-font-feature-settings: "kern", "liga", "clig", "calt";
