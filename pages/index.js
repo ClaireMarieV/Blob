@@ -3,6 +3,7 @@ import Blob from "../components/Blob.js";
 import Parameters from "../components/Parameters.js";
 import Container from "../components/Container.js";
 import Layout from "../components/Layout.js";
+import DownloadBlob from "../components/DownloadBlob.js";
 
 const round = (value) => Math.round(value * 10000000) / 10000000;
 const sin = Math.sin;
@@ -74,11 +75,15 @@ const IndexPage = () => {
       <Container>
         <div className="blob">
           <Blob points={points} color={color} />
-          <div>
-            <button onClick={(event) => regeneratePoints()}>Change</button>
+          <div id="buttons">
+            <button onClick={(event) => regeneratePoints()}>
+              <img src="randomShape.svg" />
+            </button>
+            <DownloadBlob points={points} color={color} />
           </div>
         </div>
         <Parameters
+          class="parameters"
           regeneratePoints={regeneratePoints}
           pointCount={pointCount}
           onChangePointCount={setPointCount}
@@ -95,6 +100,20 @@ const IndexPage = () => {
           align-items: center;
           flex-direction: column;
           margin: 2rem;
+        }
+        .parameters {
+          align-items: center;
+        }
+        #buttons > button {
+          transition: 0.3s ease-out;
+        }
+        #buttons > button:hover {
+          transform: rotate(-25deg);
+          transition: 0.3s ease-out;
+        }
+        #buttons {
+          display: flex;
+          align-items: center;
         }
       `}</style>
     </Layout>
