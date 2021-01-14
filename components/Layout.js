@@ -43,7 +43,7 @@ const Layout = ({ children }) => (
           font-weight: 700;
           font-style: normal;
           color: #343434;
-          background-color: #f1f0f1;
+          background-color: #fbfafb;
         }
         ::-webkit-scrollbar {
           scrollbar-width: 5px;
@@ -71,7 +71,6 @@ const Layout = ({ children }) => (
         h1 {
           font-family: raleway, sans-serif;
           font-weight: 700;
-          font-size: 3rem;
           font-style: normal;
           margin: 2rem;
         }
@@ -101,7 +100,7 @@ const Layout = ({ children }) => (
           padding: 1rem;
           border: none;
           border-radius: 40px;
-          width: 5rem;
+          width: 4rem;
           background-color: #62b589;
         }
         input {
@@ -109,6 +108,34 @@ const Layout = ({ children }) => (
           border-radius: 5px;
           border: none;
         }
+
+        //SLIDER INPUT RANGE
+        input[type="range"] {
+          -webkit-appearance: none;
+          padding: 0;
+          opacity: 0.8;
+          background: #a1d3b8;
+          opacity: 0.7;
+          box-sizing: border-box;
+          cursor: pointer;
+          height: 0.5rem;
+          width: 100%;
+        }
+
+        //CURSEUR INPUT RANGE
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border: 4px solid #fd9362;
+          border-radius: 50%;
+          width: 1.5rem;
+          height: 1.5rem;
+          background: transparent;
+          cursor: pointer;
+        }
+        // input[type="range"]::-webkit-slider-thumb:hover {
+        //   border: none;
+        //   background-color: #fdb28f;
+        // }
       `}
     </style>
     <style jsx>{`
