@@ -1,5 +1,6 @@
 import React from "react";
-import DivColors from "../components/DivColors";
+import ColorPicker from "../components/ColorPicker";
+import GradientPicker from "../components/GradientPicker";
 
 const Parameters = ({
   pointCount,
@@ -8,6 +9,8 @@ const Parameters = ({
   onChangeColor,
   background,
   onChangeBackground,
+  gradient,
+  onChangeGradient,
 }) => {
   return (
     <div>
@@ -46,7 +49,7 @@ const Parameters = ({
           <div className="buttons">
             <button
               className="button-1"
-              value="#a1d3b8"
+              value="#A1D3B8"
               onClick={(color) => onChangeColor(event.target.value)}
             />
             <button
@@ -66,7 +69,7 @@ const Parameters = ({
             />
           </div>
         </div>
-        <DivColors
+        <ColorPicker
           value={background}
           onChange={(color) => onChangeColor(color)}
         />
@@ -78,6 +81,14 @@ const Parameters = ({
           max-width: fit-content;
           padding: 1rem;
         }
+        .title {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .title svg {
+          width: 3rem;
+        }
         .title img {
           width: 100%;
           max-width: 7rem;
@@ -86,6 +97,7 @@ const Parameters = ({
         .complexity {
           display: flex;
           flex-direction: row;
+          align-items: center;
         }
         .complexity img {
           width: 100%;
@@ -104,10 +116,10 @@ const Parameters = ({
           background-color: #a1d3b8;
         }
         .button-2 {
-          background-color: #b8a1d3;
+          background-color: #b69fd2;
         }
         .button-3 {
-          background-color: #d3a1bc;
+          background-color: #c98cae;
         }
         .button-4 {
           background-color: #fda47b;
@@ -130,13 +142,6 @@ const Parameters = ({
           margin: 1rem;
           display: flex;
           flex-direction: column;
-        }
-
-        .title {
-          flex-direction: row;
-        }
-        .title svg {
-          width: 3rem;
         }
       `}</style>
     </div>
