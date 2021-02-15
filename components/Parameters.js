@@ -1,16 +1,14 @@
 import React from "react";
 import ColorPicker from "../components/ColorPicker";
-import GradientPicker from "../components/GradientPicker";
+import AnimateBlob from "../components/AnimateBlob";
 
 const Parameters = ({
   pointCount,
   onChangePointCount,
   color,
   onChangeColor,
-  background,
-  onChangeBackground,
-  gradient,
-  onChangeGradient,
+  regeneratePoints,
+  points,
 }) => {
   return (
     <div>
@@ -33,7 +31,13 @@ const Parameters = ({
           ></input>
           <img src="endComplexity.svg" />
         </div>
-
+        <label>
+          Animate
+          <input
+            type="checkbox"
+            onClick={(event) => regeneratePoints(points)}
+          />
+        </label>
         <div className="color">
           <label>
             Color
@@ -67,12 +71,12 @@ const Parameters = ({
               value="#FDA47B"
               onClick={(color) => onChangeColor(event.target.value)}
             />
+            <button className="button-5">
+              <img src="Cross.svg" />
+            </button>
           </div>
         </div>
-        <ColorPicker
-          value={background}
-          onChange={(color) => onChangeColor(color)}
-        />
+        <ColorPicker value={color} onChange={(color) => onChangeColor(color)} />
       </div>
       <style jsx>{`
         .parameters {
@@ -123,6 +127,13 @@ const Parameters = ({
         }
         .button-4 {
           background-color: #fda47b;
+        }
+        .button-5 {
+          background: transparent;
+          border: 3px solid #62b589;
+        }
+        .button-5 img {
+          width: 1.5rem;
         }
         .button-1:hover,
         .button-2:hover,
