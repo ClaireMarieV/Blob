@@ -1,15 +1,18 @@
 import React from "react";
+import Footer from "./Footer";
+
 const Layout = ({ children }) => (
   <div className="layout">
     <link rel="stylesheet" href="https://use.typekit.net/bwz5hff.css"></link>
     <div
       style={{
         margin: `0 auto`,
-        maxWidth: 1400,
       }}
     >
       <main>{children}</main>
+      <Footer />
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
     {process.env.FATHOM && (
@@ -101,7 +104,7 @@ const Layout = ({ children }) => (
           border: none;
           border-radius: 40px;
           width: 4rem;
-          background-color: #62b589;
+          background-color: #a1d3b8;
         }
         input {
           margin: 1rem;
