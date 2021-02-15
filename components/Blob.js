@@ -23,68 +23,15 @@ const Blob = ({ points, color }) => {
     "Z";
 
   return (
-    <a
-      download="blob.svg"
-      href={
-        typeof btoa !== "undefined" &&
-        "data:image/svg+xml;base64," +
-          btoa(
-            "<?xml version='1.0' standalone='no'?><svg viewBox='-1 -1 2 2' xmlns='http://www.w3.org/2000/svg'><path fill='" +
-              color +
-              "' d='" +
-              path +
-              "'></path></svg>"
-          )
-      }
-    >
-      <svg viewBox="-1 -1 2 2">
-        <path fill={color} d={path}></path>
-        {points.map(({ endPoint }) => (
-          <circle cx={endPoint.x} cy={endPoint.y} r="0.02"></circle>
-        ))}
-        {points.map(({ startPoint, startControl }) => (
-          <line
-            x1={startPoint.x}
-            y1={startPoint.y}
-            x2={startControl.x}
-            y2={startControl.y}
-            stroke="black"
-            stroke-width="0.01"
-          ></line>
-        ))}
-        {points.map(({ startControl }) => (
-          <circle //devenir un state (points, setPoint)
-            cx={startControl.x}
-            cy={startControl.y}
-            r="0.02"
-            fill="orange"
-          ></circle>
-        ))}
-        {points.map(({ endPoint, endControl }) => (
-          <line
-            x1={endPoint.x}
-            y1={endPoint.y}
-            x2={endControl.x}
-            y2={endControl.y}
-            stroke="black"
-            strokeWidth="0.01"
-          ></line>
-        ))}
-        {points.map(({ endControl }) => (
-          <circle
-            cx={endControl.x}
-            cy={endControl.y}
-            r="0.02"
-            fill="gold"
-          ></circle>
-        ))}
-      </svg>
+    <svg viewBox="-1 -1 2 2">
+      <path fill={color} d={path}></path>
+
       <style jsx>{`
         svg {
           height: 75vh;
         }
       `}</style>
-    </a>
+    </svg>
   );
 };
 export default Blob;
