@@ -111,7 +111,7 @@ const IndexPage = () => {
       <Container>
         <div className="title">
           <img src="blobGrey.svg" />
-          <h1>ORGANICS BLOBS</h1>
+          <h1>ORGANIC BLOB</h1>
         </div>
         <div className="blob">
           <Blob animation={blobAnimation} points={points} color={color} />
