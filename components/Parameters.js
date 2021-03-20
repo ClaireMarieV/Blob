@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ColorPicker from "../components/ColorPicker";
 import AnimateBlob from "../components/AnimateBlob";
+import DownloadBlob from "../components/DownloadBlob";
 
 const Parameters = ({
   pointCount,
@@ -16,36 +17,9 @@ const Parameters = ({
 
   return (
     <div>
-      <div className="title">
-        <img src="blobGrey.svg" />
-        <h1>ORGANICS BLOBS</h1>
-      </div>
       <div className="parameters">
-        <label>Blob complexity</label>
-
-        <div className="complexity">
-          <img src="complexityStart.svg" />
-          <input
-            type="range"
-            min="3"
-            max="7"
-            id="points-count"
-            value={pointCount}
-            onChange={(event) => onChangePointCount(event.target.value)}
-          ></input>
-          <img src="endComplexity.svg" />
-        </div>
-        <label>
-          Animate
-          <input
-            type="checkbox"
-            onClick={(event) => setAnimateBlob(!animateBlob)}
-            checked={animateBlob}
-          />
-        </label>
-        <div className="color">
-          <label>
-            Color
+        <section>
+          <div className="color">
             <input
               type="text"
               min="3"
@@ -54,61 +28,97 @@ const Parameters = ({
               value={color}
               onChange={(event) => onChangeColor(event.target.value)}
             />
-          </label>
-          <div className="buttons">
-            <button
-              className="button-1"
-              value="#A1D3B8"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
-            <button
-              className="button-2"
-              value="#b8a1d3"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
-            <button
-              className="button-3"
-              value="#D3A1BC"
-              onClick={(event) => onChangeColor(event.target.value)}
-            />
-            <button
-              className="button-4"
-              value="#FDA47B"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
-            <button
-              className="button-5"
-              onClick={() => setDisplayColorPicker(!displayColorPicker)}
-            >
-              <img src="Cross.svg" />
-            </button>
+            <div className="buttons">
+              <button
+                className="button-1"
+                value="#A1D3B8"
+                onClick={(color) => onChangeColor(event.target.value)}
+              />
+              <button
+                className="button-2"
+                value="#b8a1d3"
+                onClick={(color) => onChangeColor(event.target.value)}
+              />
+              <button
+                className="button-3"
+                value="#D3A1BC"
+                onClick={(event) => onChangeColor(event.target.value)}
+              />
+
+              <button
+                className="button-4"
+                onClick={() => setDisplayColorPicker(!displayColorPicker)}
+              >
+                <span>+</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </section>
+
         {displayColorPicker && (
           <ColorPicker
             value={color}
             onChange={(color) => onChangeColor(color)}
           />
         )}
+        <section>
+          <div id="buttons">
+            <button onClick={(event) => regeneratePoints()}>
+              <img src="randomShape.svg" />
+            </button>
+            <DownloadBlob points={points} color={color} />
+          </div>
+          <div className="complexity">
+            <img src="complexityStart.svg" />
+            <input
+              type="range"
+              min="3"
+              max="7"
+              id="points-count"
+              value={pointCount}
+              onChange={(event) => onChangePointCount(event.target.value)}
+            ></input>
+            <img src="endComplexity.svg" />
+          </div>
+          <label>
+            Animate
+            <input
+              type="checkbox"
+              onClick={(event) => setAnimateBlob(!animateBlob)}
+              checked={animateBlob}
+            />
+          </label>
+        </section>
       </div>
+
       <style jsx>{`
         .parameters {
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          align-items: center;
           max-width: fit-content;
           padding: 1rem;
+          margin: auto;
         }
-        .title {
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+        .parameters > section {
+          display: flex;
+          gap: 3rem;
         }
-        .title svg {
-          width: 3rem;
+        .parameters section > label {
+          align-self: center;
         }
-        .title img {
-          width: 100%;
-          max-width: 7rem;
+        #buttons button {
+          transition: all 0.5s;
+        }
+        #buttons:nth-child(1):hover button {
+          transform: rotate(45deg);
+          transition: all 0.5s;
+        }
+        #buttons button a {
+          transition: all 0.5s;
+        }
+        #buttons:nth-child(1):hover a button > img {
+          transform: scale(1.2);
+          transition: all 0.5s;
         }
         .complexity {
           display: flex;
@@ -117,16 +127,28 @@ const Parameters = ({
         }
         .complexity img {
           width: 100%;
-          max-width: 5rem;
+          max-width: 4rem;
+        }
+        .color {
+          display: flex;
         }
         .color input {
           padding: 0.5rem;
         }
+        .color:nth-child(1):hover input {
+          background: #ededed;
+        }
         .buttons {
           display: flex;
+          align-items: center;
           flex-direction: row;
           margin: 0;
           width: 0;
+        }
+        .buttons button {
+          width: 2rem;
+          height: 2rem;
+          margin: 1rem;
         }
         .button-1 {
           background-color: #a1d3b8;
@@ -137,32 +159,34 @@ const Parameters = ({
         .button-3 {
           background-color: #c98cae;
         }
+
         .button-4 {
-          background-color: #fda47b;
-        }
-        .button-5 {
           background: transparent;
-          border: 3px solid #62b589;
+          border: 3px solid #fda47b;
+          width: 3rem !important;
+          height: 3rem !important;
+          display: flex;
+          align-items: center;
+          font-size: 2rem;
+          justify-content: center;
+          color: #fda47b;
+          transition: 0.5s;
         }
-        .button-5 img {
-          width: 1.5rem;
-        }
+
         .button-1:hover,
         .button-2:hover,
-        .button-3:hover,
-        .button-4:hover {
+        .button-3:hover {
           opacity: 0.8;
+        }
+        .button-4:hover {
+          transform: scale(1.1);
+          transition: 0.5s;
         }
         .points-count {
           width: 100%;
         }
         .background-color {
           width: 50px;
-        }
-        div {
-          margin: 1rem;
-          display: flex;
-          flex-direction: column;
         }
       `}</style>
     </div>
