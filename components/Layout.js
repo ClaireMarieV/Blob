@@ -10,7 +10,6 @@ const Layout = ({ children }) => (
       }}
     >
       <main>{children}</main>
-      <Footer />
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-core.min.js"></script>
