@@ -7,8 +7,7 @@ const Container = ({ children }) => (
       .container {
         width: 100%;
         display: grid;
-        margin-top: 2rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 2rem 0 2rem 0;
       }
     `}</style>
   </div>
