@@ -43,7 +43,7 @@ const DownloadBlob = ({ points, color }) => {
       <style jsx>{`
         button {
           background: transparent;
-          border: 3px solid #a1d3b8;
+          border: 3px solid #fda47b;
         }
       `}</style>
     </a>
