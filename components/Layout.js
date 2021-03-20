@@ -103,12 +103,18 @@ const Layout = ({ children }) => (
           border: none;
           border-radius: 40px;
           width: 4rem;
-          background-color: #a1d3b8;
+          background-color: #fd9362;
+        }
+        label {
+          font-size: 1.3rem;
         }
         input {
           margin: 1rem;
           border-radius: 5px;
           border: none;
+          font-weight: 600;
+          font-size: 1.1rem;
+          color: #343434;
         }
 
         //SLIDER INPUT RANGE
@@ -116,22 +122,22 @@ const Layout = ({ children }) => (
           -webkit-appearance: none;
           padding: 0;
           opacity: 0.8;
-          background: #a1d3b8;
+          background: #dbdbdb;
           opacity: 0.7;
           box-sizing: border-box;
           cursor: pointer;
           height: 0.5rem;
-          width: 100%;
+          width: 20rem;
         }
 
         //CURSEUR INPUT RANGE
         input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance: none;
-          border: 4px solid #fd9362;
+          // border: 4px solid #fd9362;
           border-radius: 50%;
           width: 1.5rem;
           height: 1.5rem;
-          background: transparent;
+          background: #fd9362;
           cursor: pointer;
         }
         // input[type="range"]::-webkit-slider-thumb:hover {
