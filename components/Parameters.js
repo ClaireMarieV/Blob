@@ -16,7 +16,7 @@ const Parameters = ({
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   return (
-    <div>
+    <div className="shadow">
       <div className="parameters">
         <section>
           <div className="color">
@@ -98,6 +98,7 @@ const Parameters = ({
           max-width: fit-content;
           padding: 1rem;
           margin: auto;
+          box-shadow: 10px 16px 10px rgb(0 0 0 / 3%);
         }
         .parameters > section {
           display: flex;
