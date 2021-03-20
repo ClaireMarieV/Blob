@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import ColorPicker from "../components/ColorPicker";
 import AnimateBlob from "../components/AnimateBlob";
 
@@ -10,6 +10,7 @@ const Parameters = ({
   regeneratePoints,
   points,
 }) => {
+  const [displayColorPicker, setDisplayColorPicker] = useState(false);
   return (
     <div>
       <div className="title">
@@ -71,12 +72,20 @@ const Parameters = ({
               value="#FDA47B"
               onClick={(color) => onChangeColor(event.target.value)}
             />
-            <button className="button-5">
+            <button
+              className="button-5"
+              onClick={() => setDisplayColorPicker(!displayColorPicker)}
+            >
               <img src="Cross.svg" />
             </button>
           </div>
         </div>
-        <ColorPicker value={color} onChange={(color) => onChangeColor(color)} />
+        {displayColorPicker && (
+          <ColorPicker
+            value={color}
+            onChange={(color) => onChangeColor(color)}
+          />
+        )}
       </div>
       <style jsx>{`
         .parameters {
@@ -97,7 +106,6 @@ const Parameters = ({
           width: 100%;
           max-width: 7rem;
         }
-
         .complexity {
           display: flex;
           flex-direction: row;
@@ -144,11 +152,9 @@ const Parameters = ({
         .points-count {
           width: 100%;
         }
-
         .background-color {
           width: 50px;
         }
-
         div {
           margin: 1rem;
           display: flex;
