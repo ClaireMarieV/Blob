@@ -9,8 +9,11 @@ const Parameters = ({
   onChangeColor,
   regeneratePoints,
   points,
+  animateBlob,
+  setAnimateBlob,
 }) => {
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
+
   return (
     <div>
       <div className="title">
@@ -36,7 +39,8 @@ const Parameters = ({
           Animate
           <input
             type="checkbox"
-            onClick={(event) => regeneratePoints(points)}
+            onClick={(event) => setAnimateBlob(!animateBlob)}
+            checked={animateBlob}
           />
         </label>
         <div className="color">

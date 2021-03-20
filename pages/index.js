@@ -15,6 +15,10 @@ const IndexPage = () => {
   const [color, setColor] = useState("#ab21c2");
   const [background, setBackground] = useState("#ab21c2");
 
+  //Generate blob animation
+  const [animateBlob, setAnimateBlob] = useState(false);
+  const [blobAnimation, setBlobAnimation] = useState(null);
+
   const radius = 1;
   const angle = Math.PI / pointCount;
   const control =
@@ -65,16 +69,48 @@ const IndexPage = () => {
 
   useEffect(() => {
     setPoints(generateBlobShape());
+
+    if (animateBlob) {
+      setBlobAnimation([
+        generateBlobShape(),
+        generateBlobShape(),
+        generateBlobShape(),
+      ]);
+    } else {
+      setBlobAnimation(null);
+    }
   }, [pointCount]);
+
+  useEffect(() => {
+    if (animateBlob) {
+      setBlobAnimation([
+        generateBlobShape(),
+        generateBlobShape(),
+        generateBlobShape(),
+      ]);
+    } else {
+      setBlobAnimation(null);
+    }
+  }, [animateBlob]);
 
   const regeneratePoints = () => {
     setPoints(generateBlobShape());
+
+    if (animateBlob) {
+      setBlobAnimation([
+        generateBlobShape(),
+        generateBlobShape(),
+        generateBlobShape(),
+      ]);
+    } else {
+      setBlobAnimation(null);
+    }
   };
   return (
     <Layout>
       <Container>
         <div className="blob">
-          <Blob points={points} color={color} />
+          <Blob animation={blobAnimation} points={points} color={color} />
           <div id="buttons">
             <button onClick={(event) => regeneratePoints()}>
               <img src="randomShape.svg" />
@@ -91,6 +127,8 @@ const IndexPage = () => {
           onChangeColor={setColor}
           background={background}
           onChangeBackground={setBackground}
+          animateBlob={animateBlob}
+          setAnimateBlob={setAnimateBlob}
         />
       </Container>
       <style jsx>{`
@@ -100,6 +138,7 @@ const IndexPage = () => {
           align-items: center;
           flex-direction: column;
           margin: 2rem;
+          justify-content: center;
         }
         .parameters {
           align-items: center;
