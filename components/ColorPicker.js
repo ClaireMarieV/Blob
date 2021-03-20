@@ -1,22 +1,36 @@
-import React from "react";
+import { useState } from "react";
 
 const toHexa = (number) => Math.round(number).toString(16).padStart(2, "0");
 
 const ColorPicker = ({ onChange, value }) => {
+  const [rawColor, setRawColor] = useState({ red: 0, green: 0, blue: 0 });
+
   const onContrastColorSelection = (event) => {
-    console.log(
-      event.pageY,
-      event.target.parentElement.offsetTop,
-      event.target.parentElement.clientHeight,
-      event.target.parentElement
-    );
-    const horizontalPercent =
+    const white =
+      1 -
       (event.clientX - event.target.parentElement.offsetLeft) /
-      event.target.parentElement.clientWidth;
-    const verticalPercent =
-      (event.pageY - event.target.parentElement.offsetTop) /
+        event.target.parentElement.clientWidth;
+    const black =
+      (event.clientY - event.target.getBoundingClientRect().top) /
       event.target.parentElement.clientHeight;
-    console.log(horizontalPercent, verticalPercent);
+
+    let red = rawColor.red;
+    let green = rawColor.green;
+    let blue = rawColor.blue;
+
+    // lighten
+    red = red + (1 - red) * white;
+    green = green + (1 - green) * white;
+    blue = blue + (1 - blue) * white;
+
+    // darken
+    red = red * (1 - black);
+    green = green * (1 - black);
+    blue = blue * (1 - black);
+
+    onChange(
+      "#" + toHexa(red * 255) + toHexa(green * 255) + toHexa(blue * 255)
+    );
   };
 
   const onRawColorSelection = (event) => {
@@ -62,6 +76,8 @@ const ColorPicker = ({ onChange, value }) => {
       blue = 1 - (percent - 3 * portion) / portion;
     }
 
+    setRawColor({ red, green, blue });
+
     onChange(
       "#" + toHexa(red * 255) + toHexa(green * 255) + toHexa(blue * 255)
     );
@@ -72,7 +88,13 @@ const ColorPicker = ({ onChange, value }) => {
       <div className="raw-color" onClick={onRawColorSelection}></div>
       <div
         className="contrast-color"
-        style={{ backgroundColor: value }}
+        style={{
+          backgroundColor:
+            "#" +
+            toHexa(rawColor.red * 255) +
+            toHexa(rawColor.green * 255) +
+            toHexa(rawColor.blue * 255),
+        }}
         onClick={onContrastColorSelection}
       >
         <div className="light"></div>
@@ -109,7 +131,6 @@ const ColorPicker = ({ onChange, value }) => {
           max-height: 100%;
           max-width: 100%;
           border: 2px solid lightgrey;
-          border-radius: 20%;
           border: none;
         }
         .light {
@@ -121,7 +142,6 @@ const ColorPicker = ({ onChange, value }) => {
           height: 15rem;
           position: absolute;
           width: 15rem;
-          border-radius: 20px;
         }
         .dark {
           background: linear-gradient(
@@ -132,7 +152,6 @@ const ColorPicker = ({ onChange, value }) => {
           height: 15rem;
           position: absolute;
           width: 15rem;
-          border-radius: 10px;
         }
       `}</style>
     </div>
