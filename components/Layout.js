@@ -127,7 +127,7 @@ const Layout = ({ children }) => (
           box-sizing: border-box;
           cursor: pointer;
           height: 0.5rem;
-          width: 20rem;
+          max-width: 20rem;
         }
 
         //CURSEUR INPUT RANGE

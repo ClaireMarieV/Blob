@@ -163,6 +163,11 @@ const IndexPage = () => {
           display: flex;
           align-items: center;
         }
+        @media (max-width: 600px) {
+          .title {
+            justify-self: center;
+          }
+        }
       `}</style>
     </Layout>
   );

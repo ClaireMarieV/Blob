@@ -188,6 +188,14 @@ const Parameters = ({
         .background-color {
           width: 50px;
         }
+        @media (max-width: 600px) {
+          .color {
+            flex-direction: column;
+          }
+          .parameters > section {
+            flex-direction: column;
+          }
+        }
       `}</style>
     </div>
   );
