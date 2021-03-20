@@ -109,14 +109,12 @@ const IndexPage = () => {
   return (
     <Layout>
       <Container>
+        <div className="title">
+          <img src="blobGrey.svg" />
+          <h1>ORGANICS BLOBS</h1>
+        </div>
         <div className="blob">
           <Blob animation={blobAnimation} points={points} color={color} />
-          <div id="buttons">
-            <button onClick={(event) => regeneratePoints()}>
-              <img src="randomShape.svg" />
-            </button>
-            <DownloadBlob points={points} color={color} />
-          </div>
         </div>
         <Parameters
           class="parameters"
@@ -129,9 +127,20 @@ const IndexPage = () => {
           onChangeBackground={setBackground}
           animateBlob={animateBlob}
           setAnimateBlob={setAnimateBlob}
+          points={points}
         />
       </Container>
       <style jsx>{`
+        .title {
+          display: flex;
+          align-items: center;
+          padding: 1rem;
+        }
+        .title img {
+          width: 100%;
+          max-width: 5rem;
+        }
+
         .blob {
           display: flex;
           justify-content: center;
