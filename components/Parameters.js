@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ColorPicker from "../components/ColorPicker";
-import AnimateBlob from "../components/AnimateBlob";
 import DownloadBlob from "../components/DownloadBlob";
 
 const Parameters = ({
@@ -133,10 +132,10 @@ const Parameters = ({
         .color {
           display: flex;
         }
-        .color input {
+        .color > input {
           padding: 0.5rem;
         }
-        .color:nth-child(1):hover input {
+        .color:hover > input {
           background: #ededed;
         }
         .buttons {
