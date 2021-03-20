@@ -45,7 +45,7 @@ const Blob = ({ points, color, animation }) => {
 
       <style jsx>{`
         svg {
-          height: 75vh;
+          width: 20%;
         }
       `}</style>
     </svg>
