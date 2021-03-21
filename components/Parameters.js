@@ -106,6 +106,9 @@ const Parameters = ({
         .parameters section > label {
           align-self: center;
         }
+        #buttons {
+          align-self: center;
+        }
         #buttons button {
           transition: all 0.5s;
         }
