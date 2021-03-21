@@ -115,6 +115,7 @@ const Layout = ({ children }) => (
           font-weight: 600;
           font-size: 1.1rem;
           color: #343434;
+          background: transparent;
         }
 
         //SLIDER INPUT RANGE
