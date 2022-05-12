@@ -135,6 +135,7 @@ const ColorPicker = ({ onChange, value }) => {
           max-height: 100%;
           max-width: 100%;
           border: none;
+          border-radius: 0.25rem;
         }
         .light {
           background: linear-gradient(
