@@ -136,26 +136,25 @@ const ColorPicker = ({ onChange, value }) => {
           max-width: 100%;
           border: none;
           border-radius: 0.25rem;
+          position: relative;
         }
         .light {
           background: linear-gradient(
             90deg,
-            rgba(255, 255, 255, 1),
+            rgb(255, 255, 255),
             rgba(255, 255, 255, 0)
           );
           height: 15rem;
           position: absolute;
-          width: 15rem;
+          width: 100%;
+          max-width: 100%;
         }
         .dark {
-          background: linear-gradient(
-            360deg,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0)
-          );
+          background: linear-gradient(360deg, rgb(0, 0, 0), rgba(0, 0, 0, 0));
           height: 15rem;
           position: absolute;
-          width: 15rem;
+          max-width: 100%;
+          width: 100%;
         }
       `}</style>
     </div>
