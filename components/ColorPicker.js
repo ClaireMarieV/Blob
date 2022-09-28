@@ -84,7 +84,7 @@ const ColorPicker = ({ onChange, value }) => {
   };
 
   return (
-    <div>
+    <div className="raw-contrast">
       <div className="raw-color" onClick={onRawColorSelection}></div>
       <div
         className="contrast-color"
@@ -101,9 +101,13 @@ const ColorPicker = ({ onChange, value }) => {
         <div className="dark"></div>
       </div>
       <style jsx>{`
+        .raw-contrast {
+          width: 100%;
+          padding: 1rem;
+        }
         .raw-color {
           height: 8vh;
-          width: 30vw;
+          max-width: 100%;
           background: linear-gradient(
             to left,
             #ff0000,
@@ -116,7 +120,7 @@ const ColorPicker = ({ onChange, value }) => {
           );
 
           border-radius: 0.25rem;
-          margin: 1rem;
+          margin-bottom: 3rem;
         }
         .cursor {
           position: absolute;
@@ -126,32 +130,31 @@ const ColorPicker = ({ onChange, value }) => {
         }
 
         .contrast-color {
-          width: 15rem;
+          width: 100%;
           height: 15rem;
           max-height: 100%;
           max-width: 100%;
-          border: 2px solid lightgrey;
           border: none;
+          border-radius: 0.25rem;
+          position: relative;
         }
         .light {
           background: linear-gradient(
             90deg,
-            rgba(255, 255, 255, 1),
+            rgb(255, 255, 255),
             rgba(255, 255, 255, 0)
           );
           height: 15rem;
           position: absolute;
-          width: 15rem;
+          width: 100%;
+          max-width: 100%;
         }
         .dark {
-          background: linear-gradient(
-            360deg,
-            rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0)
-          );
+          background: linear-gradient(360deg, rgb(0, 0, 0), rgba(0, 0, 0, 0));
           height: 15rem;
           position: absolute;
-          width: 15rem;
+          max-width: 100%;
+          width: 100%;
         }
       `}</style>
     </div>
