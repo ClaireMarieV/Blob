@@ -134,7 +134,8 @@ const IndexPage = () => {
         .title {
           display: flex;
           align-items: center;
-          padding: 1rem;
+          padding: 1rem 3rem;
+          gap: 1rem;
         }
         .title img {
           width: 100%;
@@ -146,7 +147,6 @@ const IndexPage = () => {
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          margin: 2rem;
           justify-content: center;
         }
         .parameters {

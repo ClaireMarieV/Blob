@@ -74,7 +74,7 @@ const Layout = ({ children }) => (
           font-family: raleway, sans-serif;
           font-weight: 700;
           font-style: normal;
-          margin: 2rem;
+          margin: 2rem 0;
         }
 
         h2,
