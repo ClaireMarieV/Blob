@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 const pointsToPath = (points) =>
   "M1 0 " +
   points

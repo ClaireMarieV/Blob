@@ -75,7 +75,7 @@ const Parameters = ({
 
             <button
               className="button-2"
-              value="#f45272"
+              value="#e82d70"
               onClick={(color) => onChangeColor(event.target.value)}
             />
 
@@ -226,7 +226,7 @@ const Parameters = ({
         }
 
         .button-2 {
-          background-color: #f45272;
+          background-color: #e82d70;
         }
 
         .button-4 {
