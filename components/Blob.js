@@ -45,7 +45,7 @@ const Blob = ({ points, color, animation }) => {
 
       <style jsx>{`
         svg {
-          width: 20%;
+          width: 30vw;
         }
         @media (max-width: 600px) {
           svg {

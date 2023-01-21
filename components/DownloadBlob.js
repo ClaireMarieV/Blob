@@ -38,12 +38,26 @@ const DownloadBlob = ({ points, color }) => {
       }
     >
       <button>
-        <img src="Download1.svg" />
+        <div className="blob">
+          <span>Download</span>
+        </div>
       </button>
       <style jsx>{`
         button {
           background: transparent;
-          border: 3px solid #fda47b;
+          position: relative;
+          color: #e82d70;
+          width: 9em;
+          height: 9em;
+          border: 2px solid #e82d70;
+          border-radius: 52% 79% 53% / 58% 69% 55%;
+        }
+        .blob {
+          animation: moveR 8s linear infinite;
+          border-radius: 50%;
+          mix-blend-mode: screen;
+          font-size: 1.3rem;
+          background: transparent;
         }
       `}</style>
     </a>

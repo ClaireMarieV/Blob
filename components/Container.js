@@ -5,9 +5,13 @@ const Container = ({ children }) => (
     {children}
     <style jsx>{`
       .container {
-        width: 100%;
         display: grid;
-        margin: 2rem 0 2rem 0;
+        grid-template-columns: 1fr;
+        gap: 5rem;
+        justify-items: center;
+        width: fit-content;
+        margin: auto;
+        padding: 8rem 0;
       }
     `}</style>
   </div>

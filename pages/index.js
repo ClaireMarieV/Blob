@@ -108,11 +108,12 @@ const IndexPage = () => {
   };
   return (
     <Layout>
+      <div className="title">
+        <img src="/svg/logo.svg" />
+
+        <span>Organic blob</span>
+      </div>
       <Container>
-        <div className="title">
-          <img src="blobGrey.svg" />
-          <h1>ORGANIC BLOB</h1>
-        </div>
         <div className="blob">
           <Blob animation={blobAnimation} points={points} color={color} />
         </div>
@@ -134,35 +135,19 @@ const IndexPage = () => {
         .title {
           display: flex;
           align-items: center;
-          padding: 1rem 3rem;
+          padding: 1.5rem 3rem;
           gap: 1rem;
         }
         .title img {
           width: 100%;
-          max-width: 5rem;
+          max-width: 3.5rem;
+        }
+        .title span {
+          display: flex;
+          align-items: center;
+          font-size: 2rem;
         }
 
-        .blob {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          justify-content: center;
-        }
-        .parameters {
-          align-items: center;
-        }
-        #buttons > button {
-          transition: 0.3s ease-out;
-        }
-        #buttons > button:hover {
-          transform: rotate(-25deg);
-          transition: 0.3s ease-out;
-        }
-        #buttons {
-          display: flex;
-          align-items: center;
-        }
         @media (max-width: 600px) {
           .title {
             justify-self: center;

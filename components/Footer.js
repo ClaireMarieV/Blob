@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = ({ children }) => (
   <div className="footer">
-    <img src="WaveBlob.svg" />
+    <img src="/svg/WaveBlob.svg" />
     <style jsx>{`
       .container {
         width: 100%;
