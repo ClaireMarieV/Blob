@@ -43,21 +43,29 @@ const DownloadBlob = ({ points, color }) => {
         </div>
       </button>
       <style jsx>{`
-        button {
+        a button {
           background: transparent;
           position: relative;
           color: #e82d70;
-          width: 9em;
-          height: 9em;
+          width: 9rem;
+          height: 9rem;
           border: 2px solid #e82d70;
           border-radius: 52% 79% 53% / 58% 69% 55%;
         }
+
         .blob {
           animation: moveR 8s linear infinite;
           border-radius: 50%;
           mix-blend-mode: screen;
           font-size: 1.3rem;
           background: transparent;
+        }
+
+        @media (max-width: 450px) {
+          a button {
+            width: 8em;
+            height: 8em;
+          }
         }
       `}</style>
     </a>

@@ -15,92 +15,89 @@ const Parameters = ({
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   return (
-    <div className="shadow">
-      <div className="parameters">
-        <section>
-          <div id="buttons">
-            <button onClick={(event) => regeneratePoints()}>
-              <div className="blob">
-                <span>Generate</span>
-              </div>
-            </button>
-            <DownloadBlob points={points} color={color} />
-          </div>
-          <div className="complexity">
-            <div className="start"></div>
-            <input
-              type="range"
-              min="3"
-              max="7"
-              id="points-count"
-              value={pointCount}
-              onChange={(event) => onChangePointCount(event.target.value)}
-            ></input>
-            <div className="end"></div>
-          </div>
-          <label>
-            Animate
-            <input
-              type="checkbox"
-              onClick={(event) => setAnimateBlob(!animateBlob)}
-              checked={animateBlob}
-            />
-          </label>
-        </section>
-        <section className="hex-colors">
-          <div className="color">
-            <input
-              style={{
-                letterSpacing: " 0.045rem",
-                fontFamily: "arboria, sans-serif",
-                fontWeight: " 200",
-                color: "#fcf7f5",
-                padding: "0.5rem 1rem ",
-                fontSize: "1.2rem",
-              }}
-              type="text"
-              min="3"
-              max=""
-              id="colors"
-              value={color}
-              onChange={(event) => onChangeColor(event.target.value)}
-            />
-          </div>
-          <div className="buttons">
-            <button
-              className="button-0"
-              value="#5f6cff"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
+    <div className="parameters">
+      <section>
+        <div id="buttons">
+          <button onClick={(event) => regeneratePoints()}>
+            <div className="blob">
+              <span>Generate</span>
+            </div>
+          </button>
+          <DownloadBlob points={points} color={color} />
+        </div>
+        <div className="complexity">
+          <div className="start"></div>
+          <input
+            type="range"
+            min="3"
+            max="7"
+            id="points-count"
+            value={pointCount}
+            onChange={(event) => onChangePointCount(event.target.value)}
+          ></input>
+          <div className="end"></div>
 
-            <button
-              className="button-2"
-              value="#e82d70"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
-
-            <button
-              className="button-1"
-              value="#00d4a6"
-              onClick={(color) => onChangeColor(event.target.value)}
-            />
-            <button
-              className="button-4"
-              onClick={() => setDisplayColorPicker(!displayColorPicker)}
-            >
-              +
-            </button>
+          <div>
+            <label>
+              Animate
+              <input
+                type="checkbox"
+                onClick={(event) => setAnimateBlob(!animateBlob)}
+                checked={animateBlob}
+              />
+            </label>
           </div>
-        </section>
-
-        {displayColorPicker && (
-          <ColorPicker
+        </div>
+      </section>
+      <section className="hex-colors">
+        <div className="color">
+          <input
+            style={{
+              letterSpacing: " 0.045rem",
+              fontFamily: "arboria, sans-serif",
+              fontWeight: " 200",
+              color: "#fcf7f5",
+              padding: "0.5rem 1rem ",
+              fontSize: "1.2rem",
+            }}
+            type="text"
+            min="3"
+            max=""
+            id="colors"
             value={color}
-            onChange={(color) => onChangeColor(color)}
+            onChange={(event) => onChangeColor(event.target.value)}
           />
-        )}
-      </div>
+        </div>
+        <div className="buttons">
+          <button
+            className="button-0"
+            value="#5f6cff"
+            onClick={(color) => onChangeColor(event.target.value)}
+          />
 
+          <button
+            className="button-2"
+            value="#e82d70"
+            onClick={(color) => onChangeColor(event.target.value)}
+          />
+
+          <button
+            className="button-1"
+            value="#00d4a6"
+            onClick={(color) => onChangeColor(event.target.value)}
+          />
+          <button
+            className="button-4"
+            onClick={() => setDisplayColorPicker(!displayColorPicker)}
+          >
+            +
+          </button>
+        </div>
+      </section>
+
+      {displayColorPicker && (
+        <ColorPicker value={color} onChange={(color) => onChangeColor(color)} />
+      )}
       <style jsx>{`
         .parameters {
           display: grid;
@@ -146,19 +143,15 @@ const Parameters = ({
         }
         #buttons {
           display: flex;
-          align-items: center;
-        }
-        #buttons {
           align-self: center;
-          display: flex;
           gap: 3rem;
         }
 
         #buttons button {
           background: transparent;
           color: #5f6cff;
-          width: 9em;
-          height: 9em;
+          width: 9rem;
+          height: 9rem;
           border: 2px solid #5f6cff;
           border-radius: 52% 79% 53% / 58% 69% 55%;
         }
@@ -175,6 +168,7 @@ const Parameters = ({
           display: flex;
           flex-direction: row;
           align-items: center;
+          gap: 2rem;
         }
 
         .hex-colors {
@@ -192,12 +186,6 @@ const Parameters = ({
           mix-blend-mode: screen;
           font-size: 1.3rem;
           background: transparent;
-        }
-
-        .complexity {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
         }
 
         .buttons {
@@ -251,12 +239,31 @@ const Parameters = ({
           width: 50px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
           .color {
             flex-direction: column;
           }
           .parameters > section {
             flex-direction: column;
+          }
+
+          .hex-colors {
+            flex-direction: row;
+            padding: 1rem 0.5rem;
+          }
+
+          .button-4 {
+            display: none;
+          }
+          .complexity {
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
+        @media (max-width: 450px) {
+          #buttons button {
+            width: 8em;
+            height: 8em;
           }
         }
       `}</style>

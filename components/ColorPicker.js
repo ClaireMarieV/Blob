@@ -156,6 +156,11 @@ const ColorPicker = ({ onChange, value }) => {
           max-width: 100%;
           width: 100%;
         }
+        @media (max-width: 630px) {
+          .raw-contrast {
+            display: none;
+          }
+        }
       `}</style>
     </div>
   );

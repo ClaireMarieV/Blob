@@ -148,7 +148,7 @@ const IndexPage = () => {
           font-size: 2rem;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
           .title {
             justify-self: center;
           }
