@@ -12,6 +12,7 @@ const Container = ({ children }) => (
         width: fit-content;
         margin: auto;
         padding: 8rem 0;
+        width: 75vw;
       }
     `}</style>
   </div>

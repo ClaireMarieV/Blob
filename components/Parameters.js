@@ -102,7 +102,6 @@ const Parameters = ({
         .parameters {
           display: grid;
           align-items: center;
-          box-shadow: 10px 16px 10px rgb(0 0 0 / 3%);
           gap: 2rem;
         }
 
@@ -154,6 +153,49 @@ const Parameters = ({
           height: 9rem;
           border: 2px solid #5f6cff;
           border-radius: 52% 79% 53% / 58% 69% 55%;
+          transition: 0.2s transform ease-in-out;
+          will-change: transform;
+          z-index: 0;
+          overflow: hidden;
+          position: relative;
+        }
+
+        #buttons button::after {
+          background: #5f6cff;
+          border-radius: 50%;
+          bottom: 0;
+          content: "";
+          height: 0;
+          left: 0;
+          border-radius: 52% 79% 53% / 58% 69% 55%;
+          padding-bottom: 100%;
+          position: absolute;
+          right: 0;
+          transform: translate3d(0, 100%, 0);
+          transition: transform 1.55s cubic-bezier(0.19, 1, 0.22, 1);
+          width: 100%;
+          will-change: transform;
+        }
+
+        #buttons button:hover::after {
+          transform: translate(0, 0);
+        }
+
+        #buttons button:hover {
+          border: none;
+          will-change: transform;
+        }
+
+        #buttons button > .blob {
+          display: block;
+          position: relative;
+          z-index: 1;
+          font-weight: 400;
+        }
+
+        #buttons button:hover > .blob {
+          color: white;
+          transition: 0.25s;
         }
 
         .blob {
@@ -229,8 +271,12 @@ const Parameters = ({
           font-size: 3rem;
           color: #f9b51a;
           font-weight: 200;
+          transition: all 0.5s;
         }
-
+        .button-4:hover {
+          transform: rotate(45deg);
+          transition: all 0.5s;
+        }
         .points-count {
           width: 100%;
         }

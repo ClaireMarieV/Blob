@@ -32,7 +32,7 @@ const Layout = ({ children }) => (
           font-family: arboria, sans-serif;
           font-weight: 200;
           color: #fcf7f5;
-          background-color: #151515;
+          background-color: #141414;
           letter-spacing: 0.03rem;
         }
         ::-webkit-scrollbar {

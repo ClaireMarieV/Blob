@@ -51,14 +51,56 @@ const DownloadBlob = ({ points, color }) => {
           height: 9rem;
           border: 2px solid #e82d70;
           border-radius: 52% 79% 53% / 58% 69% 55%;
+          transition: 0.2s transform ease-in-out;
+          will-change: transform;
+          z-index: 0;
+          overflow: hidden;
+          position: relative;
         }
 
         .blob {
-          animation: moveR 8s linear infinite;
           border-radius: 50%;
           mix-blend-mode: screen;
           font-size: 1.3rem;
           background: transparent;
+        }
+
+        button::after {
+          background: #e82d70;
+          border-radius: 50%;
+          bottom: 0;
+          content: "";
+          height: 0;
+          left: 0;
+          border-radius: 52% 79% 53% / 58% 69% 55%;
+          padding-bottom: 100%;
+          position: absolute;
+          right: 0;
+          transform: translate3d(0, 100%, 0);
+          transition: transform 1.55s cubic-bezier(0.19, 1, 0.22, 1);
+          width: 100%;
+          will-change: transform;
+        }
+
+        a button:hover::after {
+          transform: translate(0, 0);
+        }
+
+        a button:hover {
+          border: none;
+          will-change: transform;
+        }
+
+        a button > .blob {
+          display: block;
+          position: relative;
+          z-index: 1;
+          font-weight: 400;
+        }
+
+        a button:hover > .blob {
+          color: white;
+          transition: 0.25s;
         }
 
         @media (max-width: 450px) {

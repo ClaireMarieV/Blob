@@ -3,7 +3,6 @@ import Blob from "../components/Blob.js";
 import Parameters from "../components/Parameters.js";
 import Container from "../components/Container.js";
 import Layout from "../components/Layout.js";
-import DownloadBlob from "../components/DownloadBlob.js";
 
 const round = (value) => Math.round(value * 10000000) / 10000000;
 const sin = Math.sin;
