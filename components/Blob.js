@@ -61,7 +61,7 @@ const Blob = ({ points, color, animation }) => {
         }
         @media (max-width: 630px) {
           svg {
-            width: 90vw;
+            width: 100%;
           }
         }
       `}</style>

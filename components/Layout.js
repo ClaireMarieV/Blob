@@ -104,7 +104,7 @@ const Layout = ({ children }) => (
           padding: 0;
           background: #ebf9f4;
           cursor: pointer;
-          height: 0.25rem;
+          height: 0.15rem;
           max-width: 20rem;
         }
 

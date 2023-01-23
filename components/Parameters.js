@@ -285,7 +285,7 @@ const Parameters = ({
           width: 50px;
         }
 
-        @media (max-width: 680px) {
+        @media (max-width: 850px) {
           .color {
             flex-direction: column;
           }
