@@ -45,9 +45,6 @@ const Blob = ({ points, color, animation }) => {
         svg {
           width: 30vw;
         }
-        svg path {
-          fill: #5f6cff;
-        }
 
         @media (max-width: 860px) {
           svg {
