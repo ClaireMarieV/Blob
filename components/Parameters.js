@@ -266,11 +266,10 @@ const Parameters = ({
           border: 2px solid #f9b51a;
           border-radius: 52% 79% 53% / 58% 69% 55%;
           display: flex;
-          align-items: end;
+          align-items: center;
           justify-content: center;
-          font-size: 3rem;
+          font-size: 2rem;
           color: #f9b51a;
-          font-weight: 200;
           transition: all 0.5s;
         }
         .button-4:hover {
